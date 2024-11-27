@@ -26,7 +26,7 @@ const renderCurrentTasks = () => {
   const currentTasks = fiterCurrentTasks();
   return (
     <>
-      <h2>Current Tasks ({currentTasks.length})</h2>
+      <h2 className="h4 py-2">Current Tasks ({currentTasks.length})</h2>
       <ul>
         {currentTasks.map((task) => (
           <ul>
@@ -52,7 +52,7 @@ const renderCompletedTasks = () => {
   const currentTasks = filterCompletedTasks();
   return (
     <>
-      <h2>Completed Tasks ({currentTasks.length})</h2>
+      <h2 className="h4 py-2">Completed Tasks ({currentTasks.length})</h2>
       <ul>
         {currentTasks.map((task) => (
           <ul>
