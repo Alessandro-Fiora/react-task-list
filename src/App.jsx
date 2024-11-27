@@ -5,6 +5,15 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import tasks from "./db/tasks";
 
+const getStatusColor = (task) => {
+  let statusColor;
+  if (task.state === "backlog") statusColor = "red";
+  else if (task.state === "in_progress") statusColor = "orange";
+  else statusColor = "green";
+
+  return statusColor;
+};
+
 const fiterCurrentTasks = () =>
   tasks.filter(
     (task) => task.state === "backlog" || task.state === "in_progress"
@@ -23,7 +32,10 @@ const renderCurrentTasks = () => {
           <ul>
             <li key={task.id}>
               <b>{task.title}</b>
-              <span className="status-label text-white py-1 px-2 ms-2">
+              <span
+                className="status-label text-white py-1 px-2 ms-2"
+                style={{ backgroundColor: getStatusColor(task) }}
+              >
                 {task.state}
               </span>
             </li>
@@ -46,7 +58,10 @@ const renderCompletedTasks = () => {
           <ul>
             <li key={task.id}>
               <b>{task.title}</b>
-              <span className="status-label text-white py-1 px-2 ms-2">
+              <span
+                className="status-label text-white py-1 px-2 ms-2"
+                style={{ backgroundColor: getStatusColor(task) }}
+              >
                 {task.state}
               </span>
             </li>
