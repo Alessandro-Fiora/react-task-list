@@ -22,7 +22,10 @@ const renderCurrentTasks = () => {
         {currentTasks.map((task) => (
           <ul>
             <li key={task.id}>
-              <b>{task.title}</b>{" "}
+              <b>{task.title}</b>
+              <span className="status-label text-white py-1 px-2 ms-2">
+                {task.state}
+              </span>
             </li>
             <li>Priority: {task.priority}</li>
             <li>Est. Time: {task.estimatedTime}</li>
@@ -42,7 +45,10 @@ const renderCompletedTasks = () => {
         {currentTasks.map((task) => (
           <ul>
             <li key={task.id}>
-              <b>{task.title}</b>{" "}
+              <b>{task.title}</b>
+              <span className="status-label text-white py-1 px-2 ms-2">
+                {task.state}
+              </span>
             </li>
             <li>Priority: {task.priority}</li>
             <li>Est. Time: {task.estimatedTime}</li>
@@ -56,14 +62,16 @@ const renderCompletedTasks = () => {
 function App() {
   return (
     <>
-      <header className="page-header">
-        <h1>Task Manager</h1>
-      </header>
-      <main>
-        {renderCurrentTasks()}
-        <hr />
-        {renderCompletedTasks()}
-      </main>
+      <div className="wrapper">
+        <header className="page-header p-3">
+          <h1>Task Manager</h1>
+        </header>
+        <main className="p-3">
+          {renderCurrentTasks()}
+          <hr />
+          {renderCompletedTasks()}
+        </main>
+      </div>
     </>
   );
 }
