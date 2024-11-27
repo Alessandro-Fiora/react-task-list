@@ -1,3 +1,8 @@
 .page-header {
   background-color: aquamarine;
 }
+
+li,
+ul {
+  padding: 0 !important;
+}

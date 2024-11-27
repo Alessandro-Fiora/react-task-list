@@ -1,6 +1,7 @@
 import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import tasks from "./db/tasks";
 
@@ -19,19 +20,13 @@ const renderCurrentTasks = () => {
       <h2>Current Tasks ({currentTasks.length})</h2>
       <ul>
         {currentTasks.map((task) => (
-          <li key={task.id}>
-            <ul>
-              <li>
-                <b>{task.title}</b>
-              </li>
-            </ul>
-            <ul>
-              <li>Priority: {task.priority}</li>
-            </ul>
-            <ul>
-              <li>Est. Time: {task.estimatedTime}</li>
-            </ul>
-          </li>
+          <ul>
+            <li key={task.id}>
+              <b>{task.title}</b>{" "}
+            </li>
+            <li>Priority: {task.priority}</li>
+            <li>Est. Time: {task.estimatedTime}</li>
+          </ul>
         ))}
       </ul>
     </>
@@ -45,19 +40,13 @@ const renderCompletedTasks = () => {
       <h2>Completed Tasks ({currentTasks.length})</h2>
       <ul>
         {currentTasks.map((task) => (
-          <li key={task.id}>
-            <ul>
-              <li>
-                <b>{task.title}</b>
-              </li>
-            </ul>
-            <ul>
-              <li>Priority: {task.priority}</li>
-            </ul>
-            <ul>
-              <li>Est. Time: {task.estimatedTime}</li>
-            </ul>
-          </li>
+          <ul>
+            <li key={task.id}>
+              <b>{task.title}</b>{" "}
+            </li>
+            <li>Priority: {task.priority}</li>
+            <li>Est. Time: {task.estimatedTime}</li>
+          </ul>
         ))}
       </ul>
     </>
