@@ -7,10 +7,19 @@ import tasks from "./db/tasks";
 
 const getStatusColor = (task) => {
   let statusColor;
-  if (task.state === "backlog") statusColor = "red";
-  else if (task.state === "in_progress") statusColor = "orange";
-  else statusColor = "green";
-
+  switch (task.state) {
+    case "backlog":
+      statusColor = "red";
+      break;
+    case "in_progress":
+      statusColor = "orange";
+      break;
+    case "completed":
+      statusColor = "green";
+      break;
+    default:
+      statusColor = "orange";
+  }
   return statusColor;
 };
 
