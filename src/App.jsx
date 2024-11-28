@@ -51,14 +51,20 @@ function App() {
     <>
       <div className="wrapper">
         <header className="page-header p-3">
-          <h1>Task Manager</h1>
+          <div className="container">
+            <h1>Task Manager</h1>
+          </div>
         </header>
         <main className="p-3">
-          <h2 className="h4 py-2">Pending Tasks ({pendingTasks.length})</h2>
-          {renderTasks(pendingTasks)}
-          <hr />
-          <h2 className="h4 py-2">Completed Tasks ({completedTasks.length})</h2>
-          {renderTasks(completedTasks)}
+          <div className="container">
+            <h2 className="h4 py-2">Pending Tasks ({pendingTasks.length})</h2>
+            {renderTasks(pendingTasks)}
+            <hr />
+            <h2 className="h4 py-2">
+              Completed Tasks ({completedTasks.length})
+            </h2>
+            {renderTasks(completedTasks)}
+          </div>
         </main>
       </div>
     </>
