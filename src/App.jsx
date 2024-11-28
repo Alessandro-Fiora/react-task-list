@@ -30,7 +30,7 @@ const renderTasks = (currentTasks) => {
               <li>
                 <b>{task.title}</b>
                 <span
-                  className="status-label text-white py-1 px-2 ms-2"
+                  className="d-inline-block rounded-1 status-label text-white py-1 px-2 ms-2"
                   style={{ backgroundColor: getStatusColor(task) }}
                 >
                   {task.state}
