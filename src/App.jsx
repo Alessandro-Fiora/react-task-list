@@ -6,21 +6,21 @@ import "./App.css";
 import tasks from "./db/tasks";
 
 const getStatusColor = (task) => {
-  let statusColor;
+  let state;
   switch (task.state) {
     case "backlog":
-      statusColor = "red";
+      state = "bg-danger";
       break;
     case "in_progress":
-      statusColor = "orange";
+      state = "bg-info";
       break;
     case "completed":
-      statusColor = "green";
+      state = "bg-success";
       break;
     default:
-      statusColor = "orange";
+      state = "bg-secondary";
   }
-  return statusColor;
+  return state;
 };
 
 const pendingTasks = tasks.filter(
@@ -39,8 +39,8 @@ const renderTasks = (currentTasks) => {
               <li>
                 <b>{task.title}</b>
                 <span
-                  className="d-inline-block rounded-1 status-label text-white py-1 px-2 ms-2"
-                  style={{ backgroundColor: getStatusColor(task) }}
+                  className={`d-inline-block rounded-1 status-label text-white py-1 px-2 ms-2 
+                    ${getStatusColor(task)}`}
                 >
                   {task.state}
                 </span>
