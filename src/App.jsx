@@ -14,60 +14,32 @@ const getStatusColor = (task) => {
   return statusColor;
 };
 
-const fiterCurrentTasks = () =>
-  tasks.filter(
-    (task) => task.state === "backlog" || task.state === "in_progress"
-  );
+const pendingTasks = tasks.filter(
+  (task) => task.state === "backlog" || task.state === "in_progress"
+);
 
-const filterCompletedTasks = () =>
-  tasks.filter((task) => task.state === "completed");
+const completedTasks = tasks.filter((task) => task.state === "completed");
 
-const renderCurrentTasks = () => {
-  const currentTasks = fiterCurrentTasks();
+const renderTasks = (currentTasks) => {
   return (
     <>
-      <h2 className="h4 py-2">Current Tasks ({currentTasks.length})</h2>
       <ul>
         {currentTasks.map((task) => (
-          <ul>
-            <li key={task.id}>
-              <b>{task.title}</b>
-              <span
-                className="status-label text-white py-1 px-2 ms-2"
-                style={{ backgroundColor: getStatusColor(task) }}
-              >
-                {task.state}
-              </span>
-            </li>
-            <li>Priority: {task.priority}</li>
-            <li>Est. Time: {task.estimatedTime}</li>
-          </ul>
-        ))}
-      </ul>
-    </>
-  );
-};
-
-const renderCompletedTasks = () => {
-  const currentTasks = filterCompletedTasks();
-  return (
-    <>
-      <h2 className="h4 py-2">Completed Tasks ({currentTasks.length})</h2>
-      <ul>
-        {currentTasks.map((task) => (
-          <ul>
-            <li key={task.id}>
-              <b>{task.title}</b>
-              <span
-                className="status-label text-white py-1 px-2 ms-2"
-                style={{ backgroundColor: getStatusColor(task) }}
-              >
-                {task.state}
-              </span>
-            </li>
-            <li>Priority: {task.priority}</li>
-            <li>Est. Time: {task.estimatedTime}</li>
-          </ul>
+          <li key={task.id}>
+            <ul>
+              <li>
+                <b>{task.title}</b>
+                <span
+                  className="status-label text-white py-1 px-2 ms-2"
+                  style={{ backgroundColor: getStatusColor(task) }}
+                >
+                  {task.state}
+                </span>
+              </li>
+              <li>Priority: {task.priority}</li>
+              <li>Est. Time: {task.estimatedTime}</li>
+            </ul>
+          </li>
         ))}
       </ul>
     </>
@@ -82,9 +54,11 @@ function App() {
           <h1>Task Manager</h1>
         </header>
         <main className="p-3">
-          {renderCurrentTasks()}
+          <h2 className="h4 py-2">Pending Tasks ({pendingTasks.length})</h2>
+          {renderTasks(pendingTasks)}
           <hr />
-          {renderCompletedTasks()}
+          <h2 className="h4 py-2">Completed Tasks ({completedTasks.length})</h2>
+          {renderTasks(completedTasks)}
         </main>
       </div>
     </>
